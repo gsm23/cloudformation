@@ -238,7 +238,7 @@ Outputs:
     Value:
       Ref: "VPC"
     Export:
-      Name: !Sub ${AWS::StackName}-VPC
+      Name: !Join [ "::", [ !Ref "AWS::Region", !Ref "AWS::StackName", VPC ] ]
 #    Export:
 #      Name:
 #        !Join ['-', [!Ref 'AWS::Region', !Sub '${AWS::StackName}', 'VPC']]
@@ -246,13 +246,13 @@ Outputs:
     Description: "SubnetId of the public subnet"
     Value:
       Ref: "PublicSubnet"
-#    Export:
-#      Name:
+    Export:
+      Name: !Join [ "::", [ !Ref "AWS::Region", !Ref "AWS::StackName", PublicSubnet ] ]
 #        !Join ['-', [!Ref 'AWS::Region', !Sub '${AWS::StackName}', 'PublicSubnet']]
   PrivateSubnet:
     Description: "SubnetId of the private subnet"
     Value:
       Ref: "PrivateSubnet"
-#      Export:
-#        Name:
+      Export:
+        Name: !Join [ "::", [ !Ref "AWS::Region", !Ref "AWS::StackName", PrivateSubnet ] ]
 #          !Join ['-', [!Ref 'AWS::Region', !Sub '${AWS::StackName}', 'PrivateSubnet']]
