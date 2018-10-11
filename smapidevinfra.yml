@@ -249,5 +249,5 @@ Outputs:
     Description: "SubnetId of the private subnet"
     Value:
       Ref: "PrivateSubnet"
-   Export:
+    Export:
       Name: !Join [ "::", [ !Ref "AWS::Region", !Ref "AWS::StackName", PrivateSubnet ] ]
