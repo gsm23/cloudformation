@@ -3,6 +3,7 @@ Description: A sample template
 Resources:
   PublicSecurityGroup:
     Type: "AWS::EC2::SecurityGroup"
+    GroupDescription: "allow http/https request via 80 and 443 port"
     Properties :
       VpcId:
         Fn::ImportValue : !Join [ "::", [ !Ref "AWS::Region", "smapidev", VPC ] ]
