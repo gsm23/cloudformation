@@ -4,7 +4,8 @@ Resources:
   PublicSecurityGroup:
     Type: "AWS::EC2::SecurityGroup"
     Properties :
-      VpcId: Fn::ImportValue : !Join [ "::", [ !Ref "AWS::Region", "smapidev", VPC ] ]
+      VpcId:
+        Fn::ImportValue : !Join [ "::", [ !Ref "AWS::Region", "smapidev", VPC ] ]
       SecurityGroupIngress :
         -
           IpProtocol: "tcp"
@@ -17,4 +18,4 @@ Outputs:
      Value:
        "PublicSecurityGroup"
       Export:
-        Name: !Join [ "::", [ !Ref "AWS::Region", !Ref "AWS::StackName", PublicSecurityGroup ] ] 
+        Name: !Join [ "::", [ !Ref "AWS::Region", !Ref "AWS::StackName", PublicSecurityGroup ] ]
