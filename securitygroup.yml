@@ -1,0 +1,20 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: A sample template
+Resources:
+  PublicSecurityGroup:
+    Type: "AWS::EC2::SecurityGroup"
+    Properties :
+      VpcId: Fn::ImportValue : !Join [ "::", [ !Ref "AWS::Region", "smapidev", VPC ] ]
+      SecurityGroupIngress :
+        -
+          IpProtocol: "tcp"
+          FromPort: "80"
+          ToPort: "80"
+          CidrIp: "0.0.0.0/0"
+Outputs:
+   PublicSecurityGroup:
+     Description: "SecurityGroupID of the newly created PublicSecurityGroup"
+     Value:
+       "PublicSecurityGroup"
+      Export:
+        Name: !Join [ "::", [ !Ref "AWS::Region", !Ref "AWS::StackName", PublicSecurityGroup ] ] 
