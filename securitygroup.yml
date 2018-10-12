@@ -17,5 +17,5 @@ Outputs:
      Description: "SecurityGroupID of the newly created PublicSecurityGroup"
      Value:
        Ref: "PublicSecurityGroup"
-      Export:
+     Export:
         Name: !Join [ "::", [ !Ref "AWS::Region", !Ref "AWS::StackName", PublicSecurityGroup ] ]
